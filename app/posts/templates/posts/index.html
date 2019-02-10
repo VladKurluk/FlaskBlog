@@ -5,9 +5,13 @@
 {% endblock %}
 
 {% block content_title %}
-    Blueprint index page
+    Posts
 {% endblock %}
 
 {% block content %}
-    Blueprint some content
+    {% for post in posts %}
+        <a href="{{ url_for('posts.post_detail', slug=post.slug) }}">
+            <h1>{{ post.title }}</h1>
+        </a>
+    {% endfor %}
 {% endblock %}
