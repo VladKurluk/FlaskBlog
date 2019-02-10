@@ -1,3 +1,5 @@
 venv/
 .vscode/
 app/__pycache__/
+
+*.pyc
