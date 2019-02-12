@@ -6,7 +6,7 @@ def slugify(s):
     pattern = r'[^\w+]'
     return re.sub(pattern, '-', s)
 
-
+# Модель для статьи
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(140))
@@ -24,4 +24,19 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post id: {}, title: {}>'.format(self.id, self.title)
+
+
+# Модель для тега статьи
+class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    slug = db.Column(db.String(100))
+
+    def __init__(self, *args, **kwargs):
+        super(Tag, self).__init__(*args, **kwargs)
+        self.slug = slugify(self.name)
+
+    def __repr__(self):
+        return '<Tag id: {}, name: {}'.format(self.id, self.name)
+
 
