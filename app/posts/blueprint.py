@@ -35,12 +35,22 @@ def create_post():
 def index():
 
     q = request.args.get('query')
+
+    page = request.args.get('page')
+
+    if page and page.isdigit():
+        page = int(page)
+    else:
+        page = 1
+
     if q:
         posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q)).all()
     else:
         posts = Post.query.order_by(Post.created.desc())
 
-    return render_template('posts/index.html', posts=posts)
+    pages = posts.paginate(page=page, per_page=3)
+
+    return render_template('posts/index.html', posts=posts, pages=pages)
 
 # http://localhost/blog/first-post
 @posts.route('/<slug>')

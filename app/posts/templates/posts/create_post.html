@@ -11,7 +11,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-lg-6 offset-lg-3">
+        <div class="col-lg-8">
             <form action="{{ url_for('posts.create_post') }}" method="POST">
                 {% for field in form %}
                     <div class="form-group">
