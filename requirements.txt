@@ -5,3 +5,4 @@ flask-migrate
 flask-script
 wtforms
 flask-admin
+flask-security
