@@ -4,3 +4,4 @@ mysql-connector==2.1.4
 flask-migrate
 flask-script
 wtforms
+flask-admin

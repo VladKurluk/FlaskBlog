@@ -60,7 +60,7 @@ def index():
         page = 1
 
     if q:
-        posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q)).all()
+        posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q))
     else:
         posts = Post.query.order_by(Post.created.desc())
 

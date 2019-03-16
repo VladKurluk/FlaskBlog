@@ -4,7 +4,7 @@ import re
 
 def slugify(s):
     pattern = r'[^\w+]'
-    return re.sub(pattern, '-', s)
+    return re.sub(pattern, '-', str(s))
 
 # Реализация отношения Many to Many
 post_tags = db.Table('post_tags',
@@ -46,6 +46,6 @@ class Tag(db.Model):
         self.slug = slugify(self.name)
 
     def __repr__(self):
-        return '<Tag id: {}, name: {}'.format(self.id, self.name)
+        return '{}'.format(self.name)
 
 
